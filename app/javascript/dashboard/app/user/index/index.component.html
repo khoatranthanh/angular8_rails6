@@ -10,11 +10,15 @@
   </thead>
   <tbody>
   <tr *ngFor="let user of users">
-    <td>{{user.name}}</td>
+    <td>
+      <a routerLink="/users/{{user.id}}/edit">
+        {{user.name}}
+      </a>
+    </td>
     <td>{{user.email}}</td>
     <td>{{user.role}}</td>
     <td>
-      <a href="">Edit</a>
+      <a routerLink="/users/{{user.id}}/edit">Edit</a>
       <a href="">Delete</a>
     </td>
   </tr>

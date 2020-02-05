@@ -1,5 +1,5 @@
 <h2 class="text-center">Add User</h2>
-<form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="editForm" (ngSubmit)="onSubmit()">
   <div class="form-group">
     <label for="name">Name:</label>
     <input type="text" formControlName="name" class="form-control">
@@ -8,16 +8,6 @@
   <div class="form-group">
     <label for="email">Email:</label>
     <input type="email" formControlName="email" class="form-control">
-  </div>
-
-  <div class="form-group">
-    <label for="password">Password:</label>
-    <input type="password" formControlName="password" class="form-control">
-  </div>
-
-  <div class="form-group">
-    <label for="password_confirmation">Confirm Password:</label>
-    <input type="password" formControlName="password_confirmation" class="form-control">
   </div>
 
   <div class="form-group">
@@ -33,5 +23,5 @@
     </select>
   </div>
 
-  <button class="btn btn-primary">Save</button>
+  <button class="btn btn-primary">Update</button>
 </form>
