@@ -15,4 +15,12 @@ export class ApiService {
   getUsers() : Observable<ApiResponse> {
     return this.http.get<ApiResponse>('api/v1/users');
   }
+
+  getRoles() : Observable<ApiResponse> {
+    return this.http.get<ApiResponse>('api/v1/users/roles');
+  }
+
+  createUser(user) : Observable<ApiResponse> {
+    return this.http.post<ApiResponse>('api/v1/users', user);
+  }
 }

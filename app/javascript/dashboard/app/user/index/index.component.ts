@@ -35,12 +35,10 @@ export class UserIndexComponent implements OnInit {
   };
 
   editUser(user: User): void {
-    window.localStorage.removeItem("editUserId");
-    window.localStorage.setItem("editUserId", user.id.toString());
     this.router.navigate(['edit-user']);
   };
 
   addUser(): void {
-    this.router.navigate(['add-user']);
+    this.router.navigate(['users/new']);
   };
 }

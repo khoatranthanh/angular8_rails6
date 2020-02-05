@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { UserIndexComponent } from "./user/index/index.component";
+import { UserNewComponent } from "./user/new/new.component";
 
 import {routing} from "./app.routing";
 import {ReactiveFormsModule} from "@angular/forms";
@@ -18,7 +19,8 @@ import { ToastrModule } from 'ngx-toastr';
   declarations: [
     AppComponent,
     LoginComponent,
-    UserIndexComponent
+    UserIndexComponent,
+    UserNewComponent
   ],
   imports: [
     BrowserModule,

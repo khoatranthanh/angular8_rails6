@@ -8,6 +8,8 @@ class User < ApplicationRecord
 
   enum role: [:teacher, :student]
 
+  validates :name, :email, :role, presence: true
+
   def ensure_authentication_token
     if authentication_token.blank?
       self.authentication_token = generate_authentication_token
