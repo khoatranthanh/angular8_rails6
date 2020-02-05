@@ -5,18 +5,15 @@ module Api::V1
     def login
       user = User.find_by(email: params[:email])
       if user&.valid_password?(params[:password])
-        sign_in user
-        render json: {
-          status: 200,
-          result: {
-            token: user.authentication_token
-          }
-        } and return
+        if is_mobile_call?
+          render_success(user)
+        else
+          sign_in(user)
+          render_success({})
+        end
+        return
       end
-      render json: {
-        status: 401,
-        message: 'Invalid email or password!'
-      }
+      render_error('Invalid email or password!', 401)
     end
   end
 end

@@ -11,4 +11,8 @@ export class ApiService {
   login(loginPayload) : Observable<ApiResponse> {
     return this.http.post<ApiResponse>('api/v1/login', loginPayload);
   }
+
+  getUsers() : Observable<ApiResponse> {
+    return this.http.get<ApiResponse>('api/v1/users');
+  }
 }

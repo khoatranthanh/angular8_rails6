@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 2020_02_04_103248) do
     t.string "encrypted_password", default: "", null: false
     t.datetime "remember_created_at"
     t.string "authentication_token"
+    t.string "name"
+    t.integer "role"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["authentication_token"], name: "index_users_on_authentication_token", unique: true

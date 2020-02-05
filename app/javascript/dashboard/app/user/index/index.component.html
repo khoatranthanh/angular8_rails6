@@ -1,0 +1,22 @@
+<button class="btn btn-danger" style="width:100px" (click)="addUser()">New User</button>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Role</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let user of users">
+    <td>{{user.name}}</td>
+    <td>{{user.email}}</td>
+    <td>{{user.role}}</td>
+    <td>
+      <a href="">Edit</a>
+      <a href="">Delete</a>
+    </td>
+  </tr>
+  </tbody>
+</table>

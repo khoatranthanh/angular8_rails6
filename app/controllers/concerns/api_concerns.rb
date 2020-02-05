@@ -1,6 +1,10 @@
 module ApiConcerns
   extend ActiveSupport::Concern
 
+  def is_mobile_call?
+    request.headers['X-IWA-DEVICE-ID'].present?
+  end
+
   def authentication_token
     request.headers['X-IWA-AUTHORIZE']
   end

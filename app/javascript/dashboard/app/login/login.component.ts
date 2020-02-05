@@ -22,15 +22,20 @@ export class LoginComponent implements OnInit {
     }
     this.apiService.login(loginPayload).subscribe(data => {
       if(data.status === 200) {
-        window.localStorage.setItem('token', data.result.token);
+        window.localStorage.setItem('login', 'true');
+        this.router.navigate(['users']);
       }else {
-        this.toastr.error(data.message);
+        this.toastr.error(String(data.message));
       }
     });
   }
 
   ngOnInit() {
-    window.localStorage.removeItem('token');
+    if(window.localStorage.getItem('login')) {
+      this.toastr.error("Already login!");
+      this.router.navigate(['users']);
+      return;
+    }
     this.loginForm = this.formBuilder.group({
       email: ['', Validators.compose([Validators.required])],
       password: ['', Validators.required]
