@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'hello-angular',
-  template: `<h1>Hello {{name}}</h1>`
+  selector: 'dashboard',
+  template: require('./app.component.html'),
+  style: require('./app.component.css')
 })
 export class AppComponent {
   name = 'Angular!';
