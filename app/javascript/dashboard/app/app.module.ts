@@ -6,6 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { UserIndexComponent } from "./user/index/index.component";
 import { UserNewComponent } from "./user/new/new.component";
 import { UserEditComponent } from "./user/edit/edit.component";
+import { UserShowComponent } from "./user/show/show.component";
 
 import {routing} from "./app.routing";
 import {ReactiveFormsModule} from "@angular/forms";
@@ -22,7 +23,8 @@ import { ToastrModule } from 'ngx-toastr';
     LoginComponent,
     UserIndexComponent,
     UserNewComponent,
-    UserEditComponent
+    UserEditComponent,
+    UserShowComponent
   ],
   imports: [
     BrowserModule,

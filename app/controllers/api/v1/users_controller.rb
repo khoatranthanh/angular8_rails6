@@ -31,6 +31,12 @@ module Api::V1
       render_error(user.errors.full_messages.first)
     end
 
+    def destroy
+      user = User.find(params[:id])
+      user.destroy!
+      render_success({})
+    end
+
     private
     def new_user_params
       params.permit(:name, :email, :role, :password, :password_confirmation)

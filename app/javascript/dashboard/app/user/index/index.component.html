@@ -11,7 +11,7 @@
   <tbody>
   <tr *ngFor="let user of users">
     <td>
-      <a routerLink="/users/{{user.id}}/edit">
+      <a routerLink="/users/{{user.id}}">
         {{user.name}}
       </a>
     </td>
@@ -19,7 +19,7 @@
     <td>{{user.role}}</td>
     <td>
       <a routerLink="/users/{{user.id}}/edit">Edit</a>
-      <a href="">Delete</a>
+      <a (click)="deleteUser(user)">Delete</a>
     </td>
   </tr>
   </tbody>

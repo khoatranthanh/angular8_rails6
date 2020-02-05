@@ -1,6 +1,5 @@
 import { Component, OnInit , Inject} from '@angular/core';
 import { Router } from "@angular/router";
-import { User } from "../../model/user.model";
 import { ApiService } from "../../service/api.service";
 import { ToastrService } from 'ngx-toastr';
 
@@ -11,7 +10,7 @@ import { ToastrService } from 'ngx-toastr';
 
 export class UserIndexComponent implements OnInit {
 
-  users: User[];
+  users: [];
 
   constructor(private router: Router, private apiService: ApiService, private toastr: ToastrService) { }
 
@@ -27,15 +26,14 @@ export class UserIndexComponent implements OnInit {
       });
   }
 
-  deleteUser(user: User): void {
-    this.apiService.deleteUser(user.id)
-      .subscribe( data => {
-        this.users = this.users.filter(u => u !== user);
-      })
-  };
-
-  editUser(user: User): void {
-    this.router.navigate(['edit-user']);
+  deleteUser(user): void {
+    if(confirm("Are you sure to delete this user?")) {
+      this.apiService.deleteUser(user.id)
+        .subscribe( data => {
+          this.toastr.success('Deleted User!')
+          this.users = this.users.filter(u => u !== user);
+        })
+    }
   };
 
   addUser(): void {
