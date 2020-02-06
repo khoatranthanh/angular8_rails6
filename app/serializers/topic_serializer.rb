@@ -1,5 +1,5 @@
 class TopicSerializer < ActiveModel::Serializer
-  attributes :name, :description, :questions
+  attributes :id, :name, :description, :questions
 
   def questions
     object.questions

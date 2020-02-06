@@ -5,12 +5,23 @@ module Api::V1
     end
 
     def create
-      topic = Topic.new(topic_params)
-      if topic.save
-        render_success({})
-        return
+      Topic.transaction do
+        topic = Topic.new(topic_params)
+        topic.save!
+        # Create question
+        params[:questions].each do |q|
+          question = topic.questions.new(title: q[:title], description: q[:description])
+          question.save!
+          # Create answer
+          q[:answers].each do |a|
+            answer = question.answers.new(JSON.parse(a.to_json))
+            answer.save!
+          end
+        end
       end
-      render_error(topic.errors.full_messages.first)
+      render_success({})
+    rescue => e
+      render_error(e.message)
     end
 
     def show

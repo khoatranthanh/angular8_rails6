@@ -1,3 +1,5 @@
 class Topic < ApplicationRecord
-  has_many :questions
+  has_many :questions, dependent: :destroy
+
+  validates :name, :description, presence: true
 end

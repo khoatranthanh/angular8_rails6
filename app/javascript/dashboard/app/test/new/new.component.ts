@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators, FormArray, FormControl} from "@angular/forms";
 import {Router} from "@angular/router";
 import {ApiService} from "../../service/api.service";
 import { ToastrService } from 'ngx-toastr';
@@ -10,16 +10,53 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class TestNewComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder,private router: Router, private apiService: ApiService, private toastr: ToastrService) { }
+  constructor(private router: Router, private apiService: ApiService, private toastr: ToastrService) { }
 
   addForm: FormGroup;
-  roles: {}
 
   ngOnInit() {
-    this.addForm = this.formBuilder.group({
-      name: ['', Validators.required],
-      description: ['', Validators.required]
+    this.addForm = new FormGroup({
+      name: new FormControl(''),
+      description: new FormControl(''),
+      questions: new FormArray([
+        this.initQuestion()
+      ]),
     });
+  }
+
+  initQuestion() {
+    return new FormGroup({
+      title: new FormControl(''),
+      description: new FormControl(''),
+      answers: new FormArray([
+        this.initAnswer()
+      ])
+    })
+  }
+
+  initAnswer() {
+    return new FormGroup({
+      content: new FormControl(''),
+      correct: new FormControl('')
+    })
+  }
+
+  getAnswers(form) {
+    return form.controls.answers.controls;
+  }
+
+  getQuestions(form) {
+    return form.controls.questions.controls;
+  }
+
+  addQuestion() {
+    const questions = <FormArray>this.addForm.get('questions');
+    questions.push(this.initQuestion())
+  }
+
+  addAnswer(i) {
+    const answers = <FormArray>this.addForm.get('questions').controls[i].get('answers');
+    answers.push(this.initAnswer())
   }
 
   onSubmit() {

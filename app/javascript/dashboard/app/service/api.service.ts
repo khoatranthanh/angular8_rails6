@@ -56,7 +56,7 @@ export class ApiService {
     return this.http.put<ApiResponse>('api/v1/tests/' + testId, testPayload);
   }
 
-  deleteTest(testId)  : Observable<ApiResponse> {
+  deleteTest(testId) : Observable<ApiResponse> {
     return this.http.delete<ApiResponse>('api/v1/tests/' + testId);
   }
 }
