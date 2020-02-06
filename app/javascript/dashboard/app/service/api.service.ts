@@ -12,6 +12,10 @@ export class ApiService {
     return this.http.post<ApiResponse>('api/v1/login', loginPayload);
   }
 
+  logout() : Observable<ApiResponse> {
+    return this.http.post<ApiResponse>('api/v1/logout', null);
+  }
+
   getUsers() : Observable<ApiResponse> {
     return this.http.get<ApiResponse>('api/v1/users');
   }

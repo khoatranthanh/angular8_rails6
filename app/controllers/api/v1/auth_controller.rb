@@ -15,5 +15,11 @@ module Api::V1
       end
       render_error('Invalid email or password!', 401)
     end
+
+    def logout
+      current_user.ensure_authentication_token
+      sign_out(current_user)
+      render_success({})
+    end
   end
 end
