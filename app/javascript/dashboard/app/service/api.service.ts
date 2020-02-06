@@ -39,4 +39,24 @@ export class ApiService {
   deleteUser(userId)  : Observable<ApiResponse> {
     return this.http.delete<ApiResponse>('api/v1/users/' + userId);
   }
+
+  getTests() : Observable<ApiResponse> {
+    return this.http.get<ApiResponse>('api/v1/tests');
+  }
+
+  createTest(test) : Observable<ApiResponse> {
+    return this.http.post<ApiResponse>('api/v1/tests', test);
+  }
+
+  getTestById(testId) : Observable<ApiResponse> {
+    return this.http.get<ApiResponse>('api/v1/tests/' + testId);
+  }
+
+  updateTest(testId, testPayload)  : Observable<ApiResponse> {
+    return this.http.put<ApiResponse>('api/v1/tests/' + testId, testPayload);
+  }
+
+  deleteTest(testId)  : Observable<ApiResponse> {
+    return this.http.delete<ApiResponse>('api/v1/tests/' + testId);
+  }
 }

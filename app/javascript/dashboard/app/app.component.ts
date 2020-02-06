@@ -11,7 +11,7 @@ import {Router} from "@angular/router";
 
 export class AppComponent {
   name = 'Angular!';
-  login = null;
+  login = 'true';
 
   constructor(private apiService: ApiService, private toastr: ToastrService, private router: Router) { }
 

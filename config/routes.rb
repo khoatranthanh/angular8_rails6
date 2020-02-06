@@ -12,6 +12,7 @@ Rails.application.routes.draw do
           get :roles
         end
       end
+      resources :tests, only: [:index, :create, :show, :update, :destroy]
     end
   end
 

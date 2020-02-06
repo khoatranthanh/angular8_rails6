@@ -22,6 +22,7 @@ export class LoginComponent implements OnInit {
     }
     this.apiService.login(loginPayload).subscribe(data => {
       if(data.status === 200) {
+        this.toastr.success('Logged in!');
         window.localStorage.setItem('login', 'true');
         this.router.navigate(['users']);
       }else {

@@ -1,0 +1,26 @@
+<button class="btn btn-primary" (click)="addTest()">New Test</button>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Question</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let test of tests">
+    <td>
+      <a>
+        {{test.name}}
+      </a>
+    </td>
+    <td>{{test.description}}</td>
+    <td>{{test.questions.length}}</td>
+    <td>
+      <a>Edit</a>
+      <a>Delete</a>
+    </td>
+  </tr>
+  </tbody>
+</table>

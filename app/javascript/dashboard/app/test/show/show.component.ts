@@ -1,0 +1,29 @@
+import { Component, OnInit , Inject } from '@angular/core';
+import { Router, ActivatedRoute } from "@angular/router";
+import { first } from "rxjs/operators";
+import { ApiService } from "../../service/api.service";
+
+@Component({
+  selector: 'show-test',
+  template: require('./show.component.html')
+})
+export class TestShowComponent implements OnInit {
+  roles: {};
+  user: {};
+  userId: '';
+  constructor(private router: Router, private apiService: ApiService, private route: ActivatedRoute) { }
+
+  ngOnInit() {
+    this.userId = this.route.snapshot.paramMap.get('id');
+
+    this.apiService.getRoles()
+      .subscribe( data => {
+        this.roles = data.result;
+        this.apiService.getUserById(this.userId)
+        .subscribe( data => {
+          this.user = data.result.user
+          this.user.role = Object.keys(this.roles).find(key => this.roles[key] === this.user.role)
+        });
+      });
+  }
+}
