@@ -18,9 +18,7 @@ export class TestNewComponent implements OnInit {
     this.addForm = new FormGroup({
       name: new FormControl(''),
       description: new FormControl(''),
-      questions: new FormArray([
-        this.initQuestion()
-      ]),
+      questions: new FormArray([]),
     });
   }
 
@@ -28,9 +26,7 @@ export class TestNewComponent implements OnInit {
     return new FormGroup({
       title: new FormControl(''),
       description: new FormControl(''),
-      answers: new FormArray([
-        this.initAnswer()
-      ])
+      answers: new FormArray([])
     })
   }
 
@@ -47,6 +43,15 @@ export class TestNewComponent implements OnInit {
 
   getQuestions(form) {
     return form.controls.questions.controls;
+  }
+
+  deleteQuestion(index) {
+    let control = <FormArray>this.addForm.controls.questions;
+    control.removeAt(index)
+  }
+
+  deleteAnswer(control, index) {
+    control.removeAt(index)
   }
 
   addQuestion() {

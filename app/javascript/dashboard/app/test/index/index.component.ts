@@ -15,11 +15,6 @@ export class TestIndexComponent implements OnInit {
   constructor(private router: Router, private apiService: ApiService, private toastr: ToastrService) { }
 
   ngOnInit() {
-    if(!window.localStorage.getItem('login')) {
-      this.toastr.error("Need login!");
-      this.router.navigate(['']);
-      return;
-    }
     this.apiService.getTests()
       .subscribe( data => {
         this.tests = data.result;

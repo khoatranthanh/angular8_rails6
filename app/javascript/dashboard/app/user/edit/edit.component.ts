@@ -29,7 +29,7 @@ export class UserEditComponent implements OnInit {
         this.roles = data.result;
         this.apiService.getUserById(this.userId)
         .subscribe( data => {
-          this.editForm.setValue(data.result.user);
+          this.editForm.setValue(data.result);
         });
       });
   }

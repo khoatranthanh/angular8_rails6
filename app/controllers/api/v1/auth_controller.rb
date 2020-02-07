@@ -8,6 +8,7 @@ module Api::V1
         if is_mobile_call?
           render_success(user)
         else
+          render_error('Not teacher!') and return if user.student?
           sign_in(user)
           render_success({})
         end

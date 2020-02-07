@@ -26,6 +26,14 @@ export class AppComponent {
     }
   };
 
+  ngOnInit() {
+    if(!window.localStorage.getItem('login')) {
+      this.toastr.error("Need login!");
+      this.router.navigate(['']);
+      return;
+    }
+  }
+
   ngAfterViewChecked() {
     this.login = window.localStorage.getItem('login')
   }

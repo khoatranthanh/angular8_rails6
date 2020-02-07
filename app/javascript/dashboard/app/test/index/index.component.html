@@ -11,14 +11,14 @@
   <tbody>
   <tr *ngFor="let test of tests">
     <td>
-      <a>
+      <a routerLink="/tests/{{test.id}}">
         {{test.name}}
       </a>
     </td>
     <td>{{test.description}}</td>
     <td>{{test.questions.length}}</td>
     <td>
-      <a>Edit</a>
+      <a routerLink="/tests/{{test.id}}/edit">Edit</a>
       <a (click)="deleteTest(test)">Delete</a>
     </td>
   </tr>

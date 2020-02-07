@@ -12,6 +12,7 @@
   </div>
   <div class="question" formArrayName="questions">
     <div *ngFor="let question of getQuestions(addForm);let i = index" [formGroupName]="i">
+      <a class="btn btn-primary" (click)="deleteQuestion(i)">Delete</a>
       <div class="form-group">
         <input type="text" formControlName="title" placeholder="Question title">
       </div>
@@ -21,6 +22,7 @@
       <a class="btn btn-primary" (click)="addAnswer(i)">Answers</a>
       <div class="answer" formArrayName="answers">
         <div *ngFor="let answer of getAnswers(question);let j = index" [formGroupName]="j">
+          <a class="btn btn-primary" (click)="deleteAnswer(question.controls.answers, j)">Delete</a>
           <div class="form-group">
             <input type="text" formControlName="content" placeholder="Answer description">
           </div>

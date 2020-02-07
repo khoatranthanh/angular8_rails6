@@ -30,12 +30,37 @@ module Api::V1
     end
 
     def update
-      topic = Topic.find(params[:id])
-      if topic.update(topic_params)
-        render_success({})
-        return
+      Topic.transaction do
+        topic = Topic.find(params[:id])
+        topic.update!(topic_params)
+
+        # Destroy question not in list update
+        topic.questions.where.not(id: params[:questions].map{|q| q['id']}.reject { |c| c.blank? }).delete_all
+        # Update question
+        params[:questions].each do |q|
+          # Create
+          if q[:id].blank?
+            question = topic.questions.new(title: q[:title], description: q[:description])
+            question.save!
+          # Update
+          else
+            question = topic.questions.find(q[:id])
+            question.update!(title: q[:title], description: q[:description])
+          end
+          # Destroy answer not in list update
+          question.answers.where.not(id: q[:answers].map{|a| a['id']}.reject { |c| c.blank? }).delete_all
+          # Update answer
+          q[:answers].each do |a|
+            # Update
+            question.answers.find(a[:id]).update!(content: a[:content], correct: a[:correct]) if a[:id].present?
+            # Create
+            question.answers.create!(content: a[:content], correct: a[:correct]) if a[:id].blank?
+          end
+        end
       end
-      render_error(topic.errors.full_messages.first)
+      render_success({})
+    rescue => e
+      render_error(e.message)
     end
 
     def destroy
