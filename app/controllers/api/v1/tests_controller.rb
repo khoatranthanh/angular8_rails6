@@ -51,8 +51,12 @@ module Api::V1
           end
           # Destroy answer not in list update
           question.answers.where.not(id: q[:answers].map{|a| a['id']}.reject { |c| c.blank? }).delete_all
+
+          # Update right answer before wrong answer
+          right_answers_params = q[:answers].select {|a| a['correct'] == true}
+          wrong_answers_params = q[:answers].select {|a| a['correct'] == false}
           # Update answer
-          q[:answers].each do |a|
+          wrong_answers_params.concat(right_answers_params).each do |a|
             # Update
             question.answers.find(a[:id]).update!(content: a[:content], correct: a[:correct]) if a[:id].present?
             # Create

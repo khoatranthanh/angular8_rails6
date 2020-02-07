@@ -1,16 +1,38 @@
-<p>
-  {{ test.name }}
-</p>
-<p>
-  {{ test.description }}
-</p>
-<div>Questions</div>
-<div *ngFor="let question of test.questions">
-  <p>{{question.title}}</p>
-  <p>{{question.description}}</p>
-  <div>Answers</div>
-  <div *ngFor="let answer of question.answers">
-    <p>{{answer.content}}</p>
-    <p>{{answer.correct}}</p>
+<a class="btn btn-primary text-white" routerLink="/tests">Back</a>
+<div class="mt-3 card p-4">
+  <p>
+    <strong>Name: </strong>
+    {{ test.name }}
+  </p>
+  <p>
+    <strong>Description: </strong>
+    {{ test.description }}
+  </p>
+  <div class="jumbotron">
+    <h3>Questions</h3>
+    <div *ngFor="let question of test.questions">
+      <p>
+        <strong>Title: </strong>
+        {{question.title}}
+      </p>
+      <p>
+        <strong>Description: </strong>
+        {{question.description}}
+      </p>
+      <div class="card p-3">
+        <h5>Answers</h5>
+        <table class="table">
+          <tr>
+            <th>Name</th>
+            <th>Correct</th>
+          </tr>
+          <tr *ngFor="let answer of question.answers">
+            <td>{{answer.content}}</td>
+            <td>{{answer.correct}}</td>
+          </tr>
+        </table>
+      </div>
+      <hr>
+    </div>
   </div>
 </div>

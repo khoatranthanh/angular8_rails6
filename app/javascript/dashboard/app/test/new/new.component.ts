@@ -33,7 +33,7 @@ export class TestNewComponent implements OnInit {
   initAnswer() {
     return new FormGroup({
       content: new FormControl(''),
-      correct: new FormControl('')
+      correct: new FormControl(false)
     })
   }
 

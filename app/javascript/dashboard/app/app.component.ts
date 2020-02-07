@@ -27,7 +27,7 @@ export class AppComponent {
   };
 
   ngOnInit() {
-    if(!window.localStorage.getItem('login')) {
+    if(!window.localStorage.getItem('login') && window.location.pathname != "/") {
       this.toastr.error("Need login!");
       this.router.navigate(['']);
       return;

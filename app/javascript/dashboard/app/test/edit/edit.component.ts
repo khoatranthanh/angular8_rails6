@@ -56,7 +56,7 @@ export class TestEditComponent implements OnInit {
         this.formBuilder.group({
           id: answer.id,
           content: answer.content,
-          correct: answer.correct
+          correct: answer.correct == 'true'
         })
       )
     })
@@ -94,7 +94,7 @@ export class TestEditComponent implements OnInit {
     const answers = <FormArray>this.editForm.get('questions').controls[i].get('answers');
     answers.push(new FormGroup({
       content: new FormControl(''),
-      correct: new FormControl('')
+      correct: new FormControl(false)
     }))
   }
 
