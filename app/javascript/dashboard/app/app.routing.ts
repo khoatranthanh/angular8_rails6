@@ -18,7 +18,7 @@ const routes: Routes = [
   { path : 'users/:id', component : UserShowComponent },
   { path : 'tests', component : TestIndexComponent },
   { path : 'tests/new', component : TestNewComponent },
-  { path : 'tests/:id/edit', component : TestEditComponent }
+  { path : 'tests/:id/edit', component : TestEditComponent },
   { path : 'tests/:id', component : TestShowComponent }
 ];
 

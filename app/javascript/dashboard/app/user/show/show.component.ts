@@ -22,7 +22,7 @@ export class UserShowComponent implements OnInit {
         this.apiService.getUserById(this.userId)
         .subscribe( data => {
           this.user = data.result
-          this.user.role = Object.keys(this.roles).find(key => this.roles[key] === this.user.role)
+          this.user['role'] = Object.keys(this.roles).find(key => this.roles[key] === this.user['role'])
         });
       });
   }

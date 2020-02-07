@@ -90,9 +90,8 @@ export class TestEditComponent implements OnInit {
     }))
   }
 
-  addAnswer(i) {
-    const answers = <FormArray>this.editForm.get('questions').controls[i].get('answers');
-    answers.push(new FormGroup({
+  addAnswer(control, i) {
+    control.push(new FormGroup({
       content: new FormControl(''),
       correct: new FormControl(false)
     }))
@@ -106,7 +105,7 @@ export class TestEditComponent implements OnInit {
             this.toastr.success('Updated Test!')
             this.router.navigate(['tests']);
           }else {
-            this.toastr.error(data.message)
+            this.toastr.error(String(data.message))
           }
         },
         error => {

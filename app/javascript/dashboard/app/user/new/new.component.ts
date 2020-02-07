@@ -37,7 +37,7 @@ export class UserNewComponent implements OnInit {
           this.toastr.success('Created user!');
           this.router.navigate(['users']);
         }else {
-          this.toastr.error(data.message);
+          this.toastr.error(String(data.message));
         }
       });
   }

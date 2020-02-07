@@ -11,7 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class UserEditComponent implements OnInit {
   roles: {};
-  userId: '';
+  userId: "";
   editForm: FormGroup;
   constructor(private formBuilder: FormBuilder,private router: Router, private apiService: ApiService, private route: ActivatedRoute, private toastr: ToastrService) { }
 

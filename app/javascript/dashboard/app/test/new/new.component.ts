@@ -59,9 +59,8 @@ export class TestNewComponent implements OnInit {
     questions.push(this.initQuestion())
   }
 
-  addAnswer(i) {
-    const answers = <FormArray>this.addForm.get('questions').controls[i].get('answers');
-    answers.push(this.initAnswer())
+  addAnswer(control, i) {
+    control.push(this.initAnswer())
   }
 
   onSubmit() {

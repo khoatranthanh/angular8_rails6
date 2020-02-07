@@ -5,8 +5,7 @@ import {Router} from "@angular/router";
 
 @Component({
   selector: 'dashboard',
-  template: require('./app.component.html'),
-  style: require('./app.component.css')
+  template: require('./app.component.html')
 })
 
 export class AppComponent {
