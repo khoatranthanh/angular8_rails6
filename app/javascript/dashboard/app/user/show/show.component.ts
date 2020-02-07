@@ -10,7 +10,7 @@ import { ApiService } from "../../service/api.service";
 export class UserShowComponent implements OnInit {
   roles: {};
   user: {};
-  userId: '';
+  userId: string;
   constructor(private router: Router, private apiService: ApiService, private route: ActivatedRoute) { }
 
   ngOnInit() {

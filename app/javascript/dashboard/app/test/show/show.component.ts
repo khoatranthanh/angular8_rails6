@@ -10,7 +10,7 @@ import { ApiService } from "../../service/api.service";
 export class TestShowComponent implements OnInit {
   roles: {};
   test: {};
-  testId: '';
+  testId: string;
   constructor(private router: Router, private apiService: ApiService, private route: ActivatedRoute) { }
 
   ngOnInit() {

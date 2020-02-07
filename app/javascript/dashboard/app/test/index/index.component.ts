@@ -10,7 +10,7 @@ import { ToastrService } from 'ngx-toastr';
 
 export class TestIndexComponent implements OnInit {
 
-  tests: [];
+  tests: any[];
 
   constructor(private router: Router, private apiService: ApiService, private toastr: ToastrService) { }
 

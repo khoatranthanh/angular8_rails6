@@ -10,7 +10,7 @@ import { ToastrService } from 'ngx-toastr';
   template: require('./edit.component.html')
 })
 export class TestEditComponent implements OnInit {
-  testId: '';
+  testId: string;
   editForm: FormGroup;
   constructor(private router: Router, private apiService: ApiService, private route: ActivatedRoute, private toastr: ToastrService, private formBuilder: FormBuilder) { }
 

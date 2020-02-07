@@ -11,7 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class UserEditComponent implements OnInit {
   roles: {};
-  userId: "";
+  userId: string;
   editForm: FormGroup;
   constructor(private formBuilder: FormBuilder,private router: Router, private apiService: ApiService, private route: ActivatedRoute, private toastr: ToastrService) { }
 
@@ -42,7 +42,7 @@ export class UserEditComponent implements OnInit {
             this.toastr.success('Updated User!')
             this.router.navigate(['users']);
           }else {
-            this.toastr.error(data.message)
+            this.toastr.error(String(data.message))
           }
         },
         error => {

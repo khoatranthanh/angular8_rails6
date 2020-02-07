@@ -3,8 +3,6 @@ import { Router } from "@angular/router";
 import { ApiService } from "../../service/api.service";
 import { ToastrService } from 'ngx-toastr';
 
-import { User } from '../model/user.model'
-
 @Component({
   selector: 'list-user',
   template: require('./index.component.html')
@@ -12,7 +10,7 @@ import { User } from '../model/user.model'
 
 export class UserIndexComponent implements OnInit {
 
-  users: User[];
+  users: any[];
 
   constructor(private router: Router, private apiService: ApiService, private toastr: ToastrService) { }
 

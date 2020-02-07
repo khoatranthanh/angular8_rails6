@@ -70,7 +70,7 @@ export class TestNewComponent implements OnInit {
           this.toastr.success('Created test!');
           this.router.navigate(['tests']);
         }else {
-          this.toastr.error(data.message);
+          this.toastr.error(String(data.message));
         }
       });
   }
