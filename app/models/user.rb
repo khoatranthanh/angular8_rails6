@@ -10,6 +10,9 @@ class User < ApplicationRecord
 
   validates :name, :email, :role, presence: true
 
+  has_many :user_answers
+  has_many :answers, :through => :user_answers
+
   def ensure_authentication_token
     if authentication_token.blank?
       self.authentication_token = generate_authentication_token

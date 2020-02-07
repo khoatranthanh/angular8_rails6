@@ -8,6 +8,7 @@
 <div *ngFor="let question of test.questions">
   <p>{{question.title}}</p>
   <p>{{question.description}}</p>
+  <div>Answers</div>
   <div *ngFor="let answer of question.answers">
     <p>{{answer.content}}</p>
     <p>{{answer.correct}}</p>

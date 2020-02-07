@@ -1,5 +1,7 @@
 module Api::V1
   class TestsController < ApiController
+    before_action :authenticate_teacher!, except: [:index, :show]
+
     def index
       render_success(ActiveModel::ArraySerializer.new(Topic.order(:id), each_serializer: TopicSerializer))
     end

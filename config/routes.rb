@@ -11,6 +11,9 @@ Rails.application.routes.draw do
         collection do
           get :roles
         end
+        member do
+          resources :answers, only: :create
+        end
       end
       resources :tests, only: [:index, :create, :show, :update, :destroy]
     end

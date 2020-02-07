@@ -1,6 +1,6 @@
 module Api::V1
   class AuthController < ApiController
-    skip_before_action :authenticate_api!
+    skip_before_action :authenticate_api!, only: :login
 
     def login
       user = User.find_by(email: params[:email])
@@ -18,8 +18,8 @@ module Api::V1
     end
 
     def logout
-      current_user.ensure_authentication_token
-      sign_out(current_user)
+      current_api_user.update(authentication_token: nil)
+      sign_out(current_api_user)
       render_success({})
     end
   end

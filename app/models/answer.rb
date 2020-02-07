@@ -3,4 +3,6 @@ class Answer < ApplicationRecord
 
   validates :content, presence: true
   validates :question_id, uniqueness: { scope: :correct }
+
+  has_many :user_answers
 end

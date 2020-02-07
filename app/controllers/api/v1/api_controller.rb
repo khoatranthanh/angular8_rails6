@@ -13,6 +13,12 @@ class ApiController < ActionController::Base
     end
   end
 
+  def authenticate_teacher!
+    unless current_api_user.teacher?
+      render_error('Not teacher!')
+    end
+  end
+
   def render_success(data)
     render json: {
       status: 200,

@@ -1,5 +1,7 @@
 module Api::V1
   class UsersController < ApiController
+    before_action :authenticate_teacher!, except: [:index, :show]
+
     def index
       render_success(User.order(:id))
     end
