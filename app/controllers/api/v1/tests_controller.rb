@@ -35,7 +35,6 @@ module Api::V1
       Topic.transaction do
         topic = Topic.find(params[:id])
         topic.update!(topic_params)
-
         # Destroy question not in list update
         topic.questions.where.not(id: params[:questions].map{|q| q['id']}.reject { |c| c.blank? }).delete_all
         # Update question
@@ -53,8 +52,8 @@ module Api::V1
           question.answers.where.not(id: q[:answers].map{|a| a['id']}.reject { |c| c.blank? }).delete_all
 
           # Update right answer before wrong answer
-          right_answers_params = q[:answers].select {|a| a['correct'] == true}
-          wrong_answers_params = q[:answers].select {|a| a['correct'] == false}
+          right_answers_params = q[:answers].select {|a| a['correct'].to_s == 'true'}
+          wrong_answers_params = q[:answers].select {|a| a['correct'].to_s == 'false'}
           # Update answer
           wrong_answers_params.concat(right_answers_params).each do |a|
             # Update
