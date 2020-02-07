@@ -11,6 +11,12 @@
 - Create test, question and answer 1 time. Should be have a better way than my way.
 - Angualr 8 support create and edit dynamic elements.
 - Because Test will be have conflict with some default Rails attribute that why I'm create database model with name Topic instead of Test.
+- Face some problem with deploy to Heroku with Webpack, I resolved by this:
+```
+heroku buildpacks:clear
+heroku buildpacks:set heroku/nodejs
+heroku buildpacks:add heroku/ruby --index 2
+```
 
 ## API Document
 - Should include `X-IWA-DEVICE-ID` for detect call API from mobile application.
